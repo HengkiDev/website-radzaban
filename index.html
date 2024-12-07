@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Radzaban</title>
+    <meta name="keywords" content="tukang tambal ban, tambal ban truk, layanan tambal ban, tambal ban darurat, tambal ban 24 jam, perbaikan ban truk">
+    <meta name="description" content="Butuh tambal ban truk? Kami adalah tukang tambal ban truk terpercaya yang siap membantu Anda dengan layanan cepat dan berkualitas.">
+    <link rel="icon" type="image/png" href="img/logo.png">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <img src="img/radzaban.jpg" alt="Background Image" class="navbar-bg">
+        
+        <div class="burger-menu" onclick="toggleMenu()">
+            <div class="bar1"></div>
+            <div class="bar2"></div>
+            <div class="bar3"></div>
+        </div>
+
+        <div class="logo-container">
+            <img src="img/logo.png" alt="Logo" class="logo">
+            <h1 class="logo-text">Radzaban</h1>
+            <p class="logo-subtitle">Layanan Profesional</p>
+        </div>
+
+        <div class="nav-menu" id="navMenu">
+            <a href="#" class="nav-link">Beranda</a>
+            <a href="#tentang" class="nav-link">Tentang</a>
+            <a href="#layanan" class="nav-link">Layanan</a>
+            <a href="#kontak" class="nav-link">Kontak</a>
+        </div>
+    </nav>
+    <main> 
+    <div class="tentang">
+        <h2 id="tentang"> Tentang Kami</h2>
+        <p>Bisnis tukang tambal ban truk kami adalah sebuah usaha yang berfokus pada jasa tambal ban dan bongkar pasang ban untuk truk. Kami menawarkan layanan yang cepat, terpercaya, dan harga yang kompetitif untuk memenuhi kebutuhan pengemudi truk dan perusahaan logistik.</p>
+    </div>
+<div class="service">
+    <h2 id="layanan"> Service Kami</h2>
+    <div class="service-container">
+        <div class="service-wrapper">
+            <div class="service-card">
+                <img src="img/gantibandalam.jpg" alt="Service 1" class="service-image">
+                <div class="service-content">
+                    <h3 class="service-title">Ganti Ban Dalam</h3>
+                    <p class="service-description">
+                        Jasa Ganti Ban Dalam
+                    </p>
+                </div>
+            </div>
+
+            <div class="service-card">
+                <img src="img/bongkarpasangban.jpg" alt="Service 2" class="service-image">
+                <div class="service-content">
+                    <h3 class="service-title">Bongkar Pasang Ban</h3>
+                    <p class="service-description">
+                        Jasa Bongkar Pasang Ban
+                    </p>
+                </div>
+            </div>
+
+            <div class="service-card">
+                <img src="img/bantruk.jpg" alt="Service 3" class="service-image">
+                <div class="service-content">
+                    <h3 class="service-title">Menjual Ban Truk</h3>
+                    <p class="service-description">
+                        Menjual Ban Luar Truk Dan Ban Dalam Truk
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="maps">
+    <h2>Location</h2>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d421.1010686100937!2d104.57880181056375!3d0.8826376150211904!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31d96b3897b8f9bd%3A0x227413fa3528a490!2sRADZABAN!5e1!3m2!1sen!2sid!4v1733586758161!5m2!1sen!2sid" width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+</div>
+
+<div class="rating-container">
+    <h2 class="rating-title">Berikan Penilaian Anda</h2>
+    <p class="rating-description">
+        Bantu kami meningkatkan pelayanan dengan memberikan penilaian jujur
+    </p>
+
+    <div class="emoji-rating">
+        <span class="emoji-star" data-rating="1" data-emoji="😞">😞</span>
+        <span class="emoji-star" data-rating="2" data-emoji="😕">😕</span>
+        <span class="emoji-star" data-rating="3" data-emoji="😐">😐</span>
+        <span class="emoji-star" data-rating="4" data-emoji="😊">😊</span>
+        <span class="emoji-star" data-rating="5" data-emoji="🤩">🤩</span>
+    </div>
+
+    <div class="rating-text">Pilih Rating Anda</div>
+
+    <button class="submit-rating">Kirim Penilaian</button>
+
+    <div class="emoji-feedback">
+        <div class="feedback-item">
+            <div class="feedback-emoji">📊</div>
+            <div class="feedback-text">Total Rating</div>
+            <div class="feedback-value">4.7</div>
+        </div>
+        <div class="feedback-item">
+            <div class="feedback-emoji">👥</div>
+            <div class="feedback-text">Jumlah Ulasan</div>
+            <div class="feedback-value">250</div>
+        </div>
+        <div class="feedback-item">
+            <div class="feedback-emoji">👍</div>
+            <div class="feedback-text">Rekomendasi</div>
+            <div class="feedback-value">98%</div>
+        </div>
+    </div>
+</div>
+
+<div class="contact-container">
+    <div class="contact-header">
+        <h2 class="contact-title">Hubungi Kami</h2>
+        <p class="contact-subtitle">Kami senang mendengar dari Anda!</p>
+    </div>
+
+    <form class="contact-form" id="contactForm">
+        <div class="form-group">
+            <span class="material-icons input-icon">person</span>
+            <input 
+                type="text" 
+                class="form-input form-input-icon"  
+                required 
+                name="name"
+            >
+        </div>
+
+        <div class="form-group">
+            <span class="material-icons input-icon">email</span>
+            <input 
+                type="email" 
+                class="form-input form-input-icon"  
+                required 
+                name="email"
+            >
+        </div>
+
+        <div class="form-group">
+            <span class="material-icons input-icon">phone</span>
+            <input 
+                type="tel" 
+                class="form-input form-input-icon"  
+                name="phone"
+            >
+        </div>
+
+        <div class="form-group">
+            <span class="material-icons input-icon">message</span>
+            <textarea 
+                class="form-input form-input-icon textarea-input" 
+                required 
+                name="message"
+            ></textarea>
+        </div>
+
+        <button type="submit" class="submit-btn">
+            Kirim Pesan 
+            <span class="material-icons btn-icon">send</span>
+        </button>
+    </form>
+</div>
+    </main>
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section about">
+                <h2>Tentang Kami</h2>
+                <p>Kami adalah penyedia jasa tambal ban dan bongkar pasang ban truk yang terpercaya. Dengan pengalaman dan keahlian, kami siap membantu Anda dalam situasi darurat dan memastikan perjalanan Anda tetap aman.</p>
+            </div>
+            <div class="footer-section services">
+                <h2>Layanan Kami</h2>
+                <ul>
+                    <li>Jasa Tambal Ban Truk</li>
+                    <li>Bongkar Pasang Ban Truk</li>
+                </ul>
+            </div>
+            <div class="footer-section contact">
+                <h2 id="kontak">Kontak Kami</h2>
+                <p>📞 Telepon: +6285837958068</p>
+                <p>📧 Email: help@radzaban.biz.id</p>
+                <p>📍 Alamat: Jl.Nusantara Km 20</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>Hak Cipta © 2024 Radzaban. Semua Hak Dilindungi.</p>
+            <p><a href="#">Kebijakan Privasi</a> | <a href="#">Syarat dan Ketentuan</a></p>
+        </div>
+    </footer>
+    <a href="https://wa.me/+6285837958068" class="whatsapp-icon" target="_blank">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" />
+    </a>
+
+    <script src="js/script.js"> </script>
+</body>
+</html>
