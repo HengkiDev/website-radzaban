@@ -3,11 +3,924 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Website Radzaban</title>
+    <title>Radzaban - Tambal Ban Truk</title>
     <meta name="keywords" content="tukang tambal ban, tambal ban truk, layanan tambal ban, tambal ban darurat, tambal ban 24 jam, perbaikan ban truk">
     <meta name="description" content="Butuh tambal ban truk? Kami adalah tukang tambal ban truk terpercaya yang siap membantu Anda dengan layanan cepat dan berkualitas.">
     <link rel="icon" type="image/png" href="img/logo.png">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #ff7b00;
+            --primary-dark: #e06c00;
+            --secondary-color: #1e3a8a;
+            --accent-color: #ffa726;
+            --light-bg: #f8f9fa;
+            --dark-bg: #333;
+            --text-dark: #333;
+            --text-light: #666;
+            --text-white: #fff;
+            --success-color: #28a745;
+            --border-radius: 8px;
+            --box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: #f4f6f9;
+        }
+
+        .navbar {
+            position: relative;
+            height: 200px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .navbar-bg {
+            width: 100%;
+            height: 200px;
+            object-fit: cover; 
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1; 
+            filter: brightness(0.6); 
+        }
+
+        .logo-container {
+            position: relative;
+            z-index: 2; 
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            animation: fadeInDown 1s;
+        }
+
+        .logo {
+            margin-top: 30px;
+            width: 100px; 
+            height: auto;
+            border-radius: 50%;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            border: 3px solid #fff;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.1);
+        }
+
+        .logo-text {
+            margin: 10px 0 0;
+            color: white;
+            font-size: 28px;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+            letter-spacing: 1px;
+        }
+
+        .logo-subtitle {
+            margin: 5px 0 0;
+            color: white;
+            font-size: 16px;
+            opacity: 0.9;
+            font-weight: 300;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+        }
+
+        /* Burger Menu Styles */
+        .burger-menu {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            width: 30px;
+            height: 20px;
+            z-index: 3;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .burger-menu .bar1, 
+        .burger-menu .bar2, 
+        .burger-menu .bar3 {
+            width: 100%;
+            height: 3px;
+            background-color: white;
+            transition: 0.4s;
+            border-radius: 2px;
+        }
+
+        .burger-menu.active .bar1 {
+            transform: rotate(-45deg) translate(-5px, 6px);
+        }
+
+        .burger-menu.active .bar2 {
+            opacity: 0;
+        }
+
+        .burger-menu.active .bar3 {
+            transform: rotate(45deg) translate(-5px, -6px);
+        }
+
+        /* Navigation Menu */
+        .nav-menu {
+            position: fixed;
+            top: 0;
+            left: -300px;
+            width: 280px;
+            height: 100%;
+            background-color: rgba(0,0,0,0.9);
+            background-image: linear-gradient(to bottom, rgba(30, 58, 138, 0.95), rgba(0, 0, 0, 0.9));
+            transition: 0.5s;
+            padding-top: 100px;
+            z-index: 2;
+            box-shadow: 5px 0 15px rgba(0,0,0,0.2);
+        }
+
+        .nav-menu.active {
+            left: 0;
+        }
+
+        .nav-link {
+            display: flex;
+            align-items: center;
+            color: white;
+            padding: 15px 25px;
+            text-decoration: none;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            transition: background 0.3s;
+            font-weight: 500;
+        }
+
+        .nav-link i {
+            margin-right: 15px;
+            font-size: 18px;
+            width: 20px;
+            text-align: center;
+        }
+
+        .nav-link:hover {
+            background-color: rgba(255,255,255,0.1);
+            padding-left: 30px;
+            color: var(--accent-color);
+        }
+
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .section-title {
+            font-size: 28px;
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 15px;
+            color: var(--secondary-color);
+            position: relative;
+            padding-bottom: 15px;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--primary-color);
+            border-radius: 2px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-light);
+            margin-bottom: 30px;
+            font-size: 16px;
+        }
+
+        .tentang {
+            background-color: white;
+            padding: 30px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .tentang p {
+            font-size: 16px;
+            line-height: 1.7;
+            margin-top: 20px;
+            color: var(--text-light);
+        }
+
+        .service {
+            margin-bottom: 30px;
+        }
+
+        .service-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px 10px;
+            background-color: white;
+            overflow-x: auto;
+            gap: 20px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+        }
+
+        .service-wrapper {
+            display: flex;
+            min-width: 100%;
+            gap: 20px;
+            padding: 0 10px;
+        }
+
+        .service-card {
+            flex: 0 0 auto;
+            width: 250px;
+            text-align: center;
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid #eaeaea;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+
+        .service-image-container {
+            position: relative;
+            overflow: hidden;
+            height: 160px;
+        }
+
+        .service-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .service-card:hover .service-image {
+            transform: scale(1.1);
+        }
+
+        .service-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.4));
+        }
+
+        .service-content {
+            padding: 20px 15px;
+            position: relative;
+        }
+
+        .service-title {
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: var(--secondary-color);
+            font-weight: 600;
+        }
+
+        .service-description {
+            font-size: 14px;
+            color: var(--text-light);
+            line-height: 1.5;
+        }
+
+        .service-icon {
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 40px;
+            background-color: var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 18px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+        }
+
+        /* Scrollbar styling for webkit browsers */
+        .service-container::-webkit-scrollbar {
+            height: 6px;
+        }
+
+        .service-container::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 3px;
+        }
+
+        .service-container::-webkit-scrollbar-thumb {
+            background: var(--primary-color);
+            border-radius: 3px;
+        }
+
+        .maps {
+            background-color: white;
+            padding: 30px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            margin-bottom: 30px;
+        }
+
+        .maps iframe {
+            border-radius: var(--border-radius);
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        .rating-container {
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            padding: 30px;
+            width: 100%;
+            text-align: center;
+            margin-top: 30px;
+            margin-bottom: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .rating-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+        }
+
+        .rating-title {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: var(--secondary-color);
+            font-weight: 600;
+        }
+
+        .rating-description {
+            color: var(--text-light);
+            margin-bottom: 25px;
+            font-size: 14px;
+            max-width: 80%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .emoji-rating {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 25px;
+            gap: 15px;
+        }
+
+        .emoji-star {
+            font-size: 36px;
+            cursor: pointer;
+            opacity: 0.3;
+            transition: all 0.3s ease;
+            user-select: none;
+        }
+
+        .emoji-star:hover,
+        .emoji-star.active {
+            opacity: 1;
+            transform: scale(1.3) rotate(5deg);
+        }
+
+        .rating-text {
+            font-size: 16px;
+            color: var(--text-dark);
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+
+        .submit-rating {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(255, 123, 0, 0.3);
+        }
+
+        .submit-rating:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(255, 123, 0, 0.4);
+        }
+
+        .submit-rating:active {
+            transform: translateY(1px);
+        }
+
+        .emoji-feedback {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 30px;
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: inset 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .feedback-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: transform 0.3s;
+        }
+
+        .feedback-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .feedback-emoji {
+            font-size: 28px;
+            margin-bottom: 5px;
+        }
+
+        .feedback-text {
+            margin-top: 3px;
+            font-size: 12px;
+            color: var(--text-light);
+        }
+
+        .feedback-value {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--secondary-color);
+        }
+
+        .contact-container {
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            width: 100%;
+            padding: 40px;
+            position: relative;
+            overflow: hidden;
+            margin-top: 30px;
+            margin-bottom: 30px;
+        }
+
+        .contact-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .contact-title {
+            font-size: 28px;
+            color: var(--secondary-color);
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .contact-subtitle {
+            font-size: 16px;
+            color: var(--text-light);
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group {
+            position: relative;
+            margin-bottom: 25px;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 15px 20px;
+            border: 2px solid #e0e0e0;
+            border-radius: var(--border-radius);
+            font-size: 16px;
+            transition: all 0.3s ease;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(255, 123, 0, 0.2);
+        }
+
+        .form-label {
+            position: absolute;
+            left: 15px;
+            top: 15px;
+            color: #999;
+            pointer-events: none;
+            transition: 0.3s ease all;
+        }
+
+        .form-input:focus ~ .form-label,
+        .form-input:not(:placeholder-shown) ~ .form-label {
+            top: -10px;
+            left: 15px;
+            font-size: 12px;
+            background-color: white;
+            padding: 0 5px;
+            color: var(--primary-color);
+        }
+
+        .input-icon {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #999;
+            transition: color 0.3s ease;
+        }
+
+        .form-input:focus + .input-icon {
+            color: var(--primary-color);
+        }
+
+        .form-input-icon {
+            padding-left: 45px;
+        }
+
+        .textarea-input {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        .submit-btn {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 15px;
+            border-radius: 50px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 500;
+            box-shadow: 0 5px 15px rgba(255, 123, 0, 0.3);
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            background-color: var(--primary-dark);
+            box-shadow: 0 8px 20px rgba(255, 123, 0, 0.4);
+        }
+
+        .submit-btn:active {
+            transform: translateY(1px);
+        }
+
+        .submit-btn .btn-icon {
+            margin-left: 10px;
+        }
+
+        .contact-info {
+            margin-top: 30px;
+            background-color: #f9f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: inset 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px;
+        }
+
+        .info-icon {
+            margin-right: 15px;
+            color: var(--primary-color);
+            font-size: 18px;
+        }
+
+        footer {
+            background-color: var(--dark-bg);
+            color: #fff;
+            padding: 40px 0 0;
+            font-family: 'Poppins', sans-serif;
+            position: relative;
+        }
+
+        .footer-wave {
+            position: absolute;
+            top: -50px;
+            left: 0;
+            width: 100%;
+            height: 50px;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120' preserveAspectRatio='none'%3E%3Cpath d='M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z' opacity='.25' fill='%23333'%3E%3C/path%3E%3Cpath d='M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z' opacity='.5' fill='%23333'%3E%3C/path%3E%3Cpath d='M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z' fill='%23333'%3E%3C/path%3E%3C/svg%3E");
+            background-size: cover;
+        }
+
+        .footer-container {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+            margin: 10px 20px;
+        }
+
+        .footer-section h2 {
+            color: var(--primary-color);
+            font-size: 18px;
+            margin-bottom: 20px;
+            font-weight: 600;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-section h2::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--primary-color);
+        }
+
+        .footer-section p, .footer-section ul {
+            margin: 15px 0;
+            color: #bbb;
+            font-size: 14px;
+            line-height: 1.7;
+        }
+
+        .footer-section ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .footer-section ul li {
+            margin: 10px 0;
+            display: flex;
+            align-items: center;
+        }
+
+        .footer-section ul li i {
+            margin-right: 10px;
+            color: var(--primary-color);
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-icon {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            color: white;
+            font-size: 18px;
+            transition: all 0.3s ease;
+        }
+
+        .social-icon:hover {
+            background-color: var(--primary-color);
+            transform: translateY(-5px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding: 20px 0;
+            background-color: rgba(0,0,0,0.2);
+            margin-top: 30px;
+        }
+
+        .footer-bottom p {
+            margin: 5px 0;
+            font-size: 14px;
+            color: #999;
+        }
+
+        .footer-bottom a {
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-bottom a:hover {
+            color: white;
+        }
+
+        .whatsapp-icon {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #25D366;
+            border-radius: 50%;
+            padding: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+            transition: all 0.3s ease;
+            animation: pulse 2s infinite;
+        }
+
+        .whatsapp-icon:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        .whatsapp-icon img {
+            width: 50px;
+            height: 50px;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            }
+            50% {
+                transform: scale(1.05);
+                box-shadow: 0 8px 20px rgba(37, 211, 102, 0.4);
+            }
+            100% {
+                transform: scale(1);
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            }
+        }
+
+        /* Animations */
+        .animate-fade-in {
+            animation: fadeIn 1s;
+        }
+
+        .animate-slide-up {
+            animation: slideUp 0.8s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(30px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        /* Back to top button */
+        .back-to-top {
+            position: fixed;
+            bottom: 100px;
+            right: 30px;
+            background-color: var(--primary-color);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 99;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-3px);
+        }
+
+        /* Responsive */
+        @media screen and (max-width: 992px) {
+            .footer-section {
+                min-width: 200px;
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+            .navbar {
+                height: 150px;
+            }
+            
+            .navbar-bg {
+                height: 150px;
+            }
+
+            .service-container {
+                padding: 15px 5px;
+            }
+
+            .service-card {
+                width: 200px;
+            }
+
+            .service-image {
+                height: 120px;
+            }
+
+            .service-title {
+                font-size: 16px;
+            }
+
+            .service-description {
+                font-size: 12px;
+            }
+
+            .footer-section {
+                flex: 0 0 100%;
+                margin: 20px 0;
+            }
+
+            .contact-container {
+                padding: 20px;
+            }
+        }
+
+        @media screen and (max-width: 576px) {
+            main {
+                padding: 15px;
+            }
+
+            .tentang, .service-container, .maps, .rating-container, .contact-container {
+                padding: 20px 15px;
+            }
+
+            .emoji-rating {
+                gap: 10px;
+            }
+
+            .emoji-star {
+                font-size: 28px;
+            }
+
+            .emoji-feedback {
+                flex-wrap: wrap;
+                gap: 15px;
+            }
+
+            .feedback-item {
+                flex: 0 0 45%;
+                margin-bottom: 10px;
+            }
+        }
+    </style>
 </head>
 <body>
     <nav class="navbar">
@@ -22,180 +935,344 @@
         <div class="logo-container">
             <img src="img/logo.png" alt="Logo" class="logo">
             <h1 class="logo-text">Radzaban</h1>
-            <p class="logo-subtitle">Layanan Profesional</p>
         </div>
 
         <div class="nav-menu" id="navMenu">
-            <a href="#" class="nav-link">Beranda</a>
-            <a href="#tentang" class="nav-link">Tentang</a>
-            <a href="#layanan" class="nav-link">Layanan</a>
-            <a href="#kontak" class="nav-link">Kontak</a>
+            <a href="#" class="nav-link"><i class="fas fa-home"></i> Beranda</a>
+            <a href="#tentang" class="nav-link"><i class="fas fa-info-circle"></i> Tentang</a>
+            <a href="#layanan" class="nav-link"><i class="fas fa-tools"></i> Layanan</a>
+            <a href="#kontak" class="nav-link"><i class="fas fa-phone-alt"></i> Kontak</a>
+            <a href="#peta" class="nav-link"><i class="fas fa-map-marker-alt"></i> Lokasi</a>
+            <a href="#rating" class="nav-link"><i class="fas fa-star"></i> Rating</a>
         </div>
     </nav>
-    <main> 
-    <div class="tentang">
-        <h2 id="tentang"> Tentang Kami</h2>
-        <p>Bisnis tukang tambal ban truk kami adalah sebuah usaha yang berfokus pada jasa tambal ban dan bongkar pasang ban untuk truk. Kami menawarkan layanan yang cepat, terpercaya, dan harga yang kompetitif untuk memenuhi kebutuhan pengemudi truk dan perusahaan logistik.</p>
-    </div>
-<div class="service">
-    <h2 id="layanan"> Service Kami</h2>
-    <div class="service-container">
-        <div class="service-wrapper">
-            <div class="service-card">
-                <img src="img/gantibandalam.jpg" alt="Service 1" class="service-image">
-                <div class="service-content">
-                    <h3 class="service-title">Ganti Ban Dalam</h3>
-                    <p class="service-description">
-                        Jasa Ganti Ban Dalam
-                    </p>
+
+    <main>
+        <section id="tentang" class="tentang animate-fade-in">
+            <h2 class="section-title">Tentang Kami</h2>
+            <p class="section-subtitle">Layanan Tambal Ban Truk Profesional & Terpercaya</p>
+            <p>Radzaban adalah layanan tambal ban truk terpercaya yang telah melayani ribuan pelanggan di seluruh wilayah. Dengan pengalaman lebih dari 10 tahun di bidang perbaikan ban, kami menyediakan layanan cepat, handal, dan berkualitas untuk semua jenis kendaraan berat.</p>
+            <p>Tim teknisi kami terlatih dengan baik dan selalu siap membantu Anda dengan masalah ban kapan saja dan dimana saja. Kami berkomitmen untuk memberikan pelayanan terbaik dengan harga yang terjangkau.</p>
+        </section>
+
+        <section id="layanan" class="service animate-slide-up">
+            <h2 class="section-title">Layanan Kami</h2>
+            <p class="section-subtitle">Solusi lengkap untuk kebutuhan ban kendaraan Anda</p>
+            
+            <div class="service-container">
+                <div class="service-wrapper">
+                    <div class="service-card">
+                        <div class="service-image-container">
+                            <img src="img/bongkarpasangban.jpg" alt="Tambal Ban Truk" class="service-image">
+                            <div class="service-overlay"></div>
+                        </div>
+                        <div class="service-content">
+                            <div class="service-icon">
+                                <i class="fas fa-truck"></i>
+                            </div>
+                            <h3 class="service-title">Tambal Ban Truk</h3>
+                            <p class="service-description">Layanan tambal ban truk cepat dan berkualitas dengan material terbaik.</p>
+                        </div>
+                    </div>
+
+                    <div class="service-card">
+                        <div class="service-image-container">
+                            <img src="img/bantruk.jpg" alt="Ganti Ban" class="service-image">
+                            <div class="service-overlay"></div>
+                        </div>
+                        <div class="service-content">
+                            <div class="service-icon">
+                                <i class="fas fa-sync-alt"></i>
+                            </div>
+                            <h3 class="service-title">Ganti Ban</h3>
+                            <p class="service-description">Layanan penggantian ban dengan berbagai pilihan kualitas.</p>
+                        </div>
+                    </div>
+
+                    <div class="service-card">
+                        <div class="service-image-container">
+                            <img src="img/gantibandalam.jpg" alt="Perawatan Ban" class="service-image">
+                            <div class="service-overlay"></div>
+                        </div>
+                        <div class="service-content">
+                            <div class="service-icon">
+                                <i class="fas fa-clipboard-check"></i>
+                            </div>
+                            <h3 class="service-title">Perawatan Ban</h3>
+                            <p class="service-description">Layanan perawatan rutin untuk memperpanjang usia ban Anda.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
+        </section>
 
-            <div class="service-card">
-                <img src="img/bongkarpasangban.jpg" alt="Service 2" class="service-image">
-                <div class="service-content">
-                    <h3 class="service-title">Bongkar Pasang Ban</h3>
-                    <p class="service-description">
-                        Jasa Bongkar Pasang Ban
-                    </p>
+        <section id="peta" class="maps animate-fade-in">
+            <h2 class="section-title">Lokasi Kami</h2>
+            <p class="section-subtitle">Temukan kami di peta</p>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d421.1010686100937!2d104.57880181056375!3d0.8826376150211904!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31d96b3897b8f9bd%3A0x227413fa3528a490!2sRADZABAN!5e1!3m2!1sen!2sid!4v1733586758161!5m2!1sen!2sid" width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </section>
+
+        <section id="rating" class="rating-container animate-slide-up">
+            <h2 class="rating-title">Beri Kami Rating</h2>
+            <p class="rating-description">Bantu kami meningkatkan layanan dengan memberikan penilaian terhadap pengalaman Anda</p>
+            
+            <div class="emoji-rating">
+                <div class="emoji-star" onclick="setRating(1)">😞</div>
+                <div class="emoji-star" onclick="setRating(2)">😕</div>
+                <div class="emoji-star" onclick="setRating(3)">😐</div>
+                <div class="emoji-star" onclick="setRating(4)">🙂</div>
+                <div class="emoji-star" onclick="setRating(5)">😄</div>
+            </div>
+            
+            <div class="rating-text">Pilih rating Anda</div>
+            
+            <button class="submit-rating" onclick="submitRating()">
+                Kirim Rating <i class="fas fa-paper-plane btn-icon"></i>
+            </button>
+            
+            <div class="emoji-feedback">
+                <div class="feedback-item">
+                    <div class="feedback-emoji">⭐</div>
+                    <div class="feedback-value">4.8</div>
+                    <div class="feedback-text">Rating</div>
+                </div>
+                <div class="feedback-item">
+                    <div class="feedback-emoji">👨‍🔧</div>
+                    <div class="feedback-value">20+</div>
+                    <div class="feedback-text">Teknisi</div>
+                </div>
+                <div class="feedback-item">
+                    <div class="feedback-emoji">🚚</div>
+                    <div class="feedback-value">5000+</div>
+                    <div class="feedback-text">Kendaraan</div>
+                </div>
+                <div class="feedback-item">
+                    <div class="feedback-emoji">😄</div>
+                    <div class="feedback-value">98%</div>
+                    <div class="feedback-text">Kepuasan</div>
                 </div>
             </div>
+        </section>
 
-            <div class="service-card">
-                <img src="img/bantruk.jpg" alt="Service 3" class="service-image">
-                <div class="service-content">
-                    <h3 class="service-title">Menjual Ban Truk</h3>
-                    <p class="service-description">
-                        Menjual Ban Luar Truk Dan Ban Dalam Truk
-                    </p>
+        <section id="kontak" class="contact-container animate-fade-in">
+            <div class="contact-header">
+                <h2 class="contact-title">Hubungi Kami</h2>
+                <p class="contact-subtitle">Kami siap membantu 24/7</p>
+            </div>
+            
+            <form class="contact-form" id="contactForm">
+                <div class="form-group">
+                    <input type="text" class="form-input form-input-icon" id="name" placeholder=" " required>
+                    <i class="fas fa-user input-icon"></i>
+                    <label for="name" class="form-label">Nama Lengkap</label>
+                </div>
+                
+                <div class="form-group">
+                    <input type="email" class="form-input form-input-icon" id="email" placeholder=" " required>
+                    <i class="fas fa-envelope input-icon"></i>
+                    <label for="email" class="form-label">Email</label>
+                </div>
+                
+                <div class="form-group">
+                    <input type="tel" class="form-input form-input-icon" id="phone" placeholder=" " required>
+                    <i class="fas fa-phone input-icon"></i>
+                    <label for="phone" class="form-label">Nomor Telepon</label>
+                </div>
+                
+                <div class="form-group">
+                    <textarea class="form-input textarea-input" id="message" placeholder=" " required></textarea>
+                    <label for="message" class="form-label">Pesan</label>
+                </div>
+                
+                <button type="submit" class="submit-btn">
+                    Kirim Pesan <i class="fas fa-paper-plane btn-icon"></i>
+                </button>
+            </form>
+            
+            <div class="contact-info">
+                <div class="info-item">
+                    <i class="fas fa-phone-alt info-icon"></i>
+                    <span>+62 858-3795-8068</span>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-envelope info-icon"></i>
+                    <span>help@radzaban.biz.id</span>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-map-marker-alt info-icon"></i>
+                    <span>Jl.Nusantara Km 20</span>
                 </div>
             </div>
-        </div>
-    </div>
-</div>
-
-<div class="maps">
-    <h2>Location</h2>
-    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d421.1010686100937!2d104.57880181056375!3d0.8826376150211904!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31d96b3897b8f9bd%3A0x227413fa3528a490!2sRADZABAN!5e1!3m2!1sen!2sid!4v1733586758161!5m2!1sen!2sid" width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-</div>
-
-<div class="rating-container">
-    <h2 class="rating-title">Berikan Penilaian Anda</h2>
-    <p class="rating-description">
-        Bantu kami meningkatkan pelayanan dengan memberikan penilaian jujur
-    </p>
-
-    <div class="emoji-rating">
-        <span class="emoji-star" data-rating="1" data-emoji="😞">😞</span>
-        <span class="emoji-star" data-rating="2" data-emoji="😕">😕</span>
-        <span class="emoji-star" data-rating="3" data-emoji="😐">😐</span>
-        <span class="emoji-star" data-rating="4" data-emoji="😊">😊</span>
-        <span class="emoji-star" data-rating="5" data-emoji="🤩">🤩</span>
-    </div>
-
-    <div class="rating-text">Pilih Rating Anda</div>
-
-    <button class="submit-rating">Kirim Penilaian</button>
-
-    <div class="emoji-feedback">
-        <div class="feedback-item">
-            <div class="feedback-emoji">📊</div>
-            <div class="feedback-text">Total Rating</div>
-            <div class="feedback-value">4.7</div>
-        </div>
-        <div class="feedback-item">
-            <div class="feedback-emoji">👥</div>
-            <div class="feedback-text">Jumlah Ulasan</div>
-            <div class="feedback-value">250</div>
-        </div>
-        <div class="feedback-item">
-            <div class="feedback-emoji">👍</div>
-            <div class="feedback-text">Rekomendasi</div>
-            <div class="feedback-value">98%</div>
-        </div>
-    </div>
-</div>
-
-<div class="contact-container">
-    <div class="contact-header">
-        <h2 class="contact-title">Hubungi Kami</h2>
-        <p class="contact-subtitle">Kami senang mendengar dari Anda!</p>
-    </div>
-
-    <form class="contact-form" id="contactForm">
-        <div class="form-group">
-            <span class="material-icons input-icon">person</span>
-            <input 
-                type="text" 
-                class="form-input form-input-icon"  
-                required 
-                name="name"
-            >
-        </div>
-
-        <div class="form-group">
-            <span class="material-icons input-icon">email</span>
-            <input 
-                type="email" 
-                class="form-input form-input-icon"  
-                required 
-                name="email"
-            >
-        </div>
-
-        <div class="form-group">
-            <span class="material-icons input-icon">phone</span>
-            <input 
-                type="tel" 
-                class="form-input form-input-icon"  
-                name="phone"
-            >
-        </div>
-
-        <div class="form-group">
-            <span class="material-icons input-icon">message</span>
-            <textarea 
-                class="form-input form-input-icon textarea-input" 
-                required 
-                name="message"
-            ></textarea>
-        </div>
-
-        <button type="submit" class="submit-btn">
-            Kirim Pesan 
-        </button>
-    </form>
-</div>
+        </section>
     </main>
+
     <footer>
+        <div class="footer-wave"></div>
         <div class="footer-container">
-            <div class="footer-section about">
-                <h2>Tentang Kami</h2>
-                <p>Kami adalah penyedia jasa tambal ban dan bongkar pasang ban truk yang terpercaya. Dengan pengalaman dan keahlian, kami siap membantu Anda dalam situasi darurat dan memastikan perjalanan Anda tetap aman.</p>
+            <div class="footer-section">
+                <h2>Tentang Radzaban</h2>
+                <p>Radzaban adalah layanan tambal ban truk profesional dengan pengalaman lebih dari 10 tahun. Kami menyediakan layanan berkualitas tinggi dengan harga terjangkau.</p>
+                <div class="social-icons">
+                    <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+                </div>
             </div>
-            <div class="footer-section services">
+            
+            <div class="footer-section">
                 <h2>Layanan Kami</h2>
                 <ul>
-                    <li>Jasa Tambal Ban Truk</li>
-                    <li>Bongkar Pasang Ban Truk</li>
+                    <li><i class="fas fa-check-circle"></i> Tambal Ban Truk</li>
+                    <li><i class="fas fa-check-circle"></i> Tambal Ban Darurat</li>
+                    <li><i class="fas fa-check-circle"></i> Ganti Ban</li>
+                    <li><i class="fas fa-check-circle"></i> Perawatan Ban</li>
+                    <li><i class="fas fa-check-circle"></i> Konsultasi Ban</li>
                 </ul>
             </div>
-            <div class="footer-section contact">
-                <h2 id="kontak">Kontak Kami</h2>
-                <p>📞 Telepon: +6285837958068</p>
-                <p>📧 Email: help@radzaban.biz.id</p>
-                <p>📍 Alamat: Jl.Nusantara Km 20</p>
+            
+            <div class="footer-section">
+                <h2>Jam Operasional</h2>
+                <ul>
+                    <li><i class="far fa-clock"></i> Senin - Jumat: 08:00 - 20:00</li>
+                    <li><i class="far fa-clock"></i> Sabtu: 08:00 - 18:00</li>
+                    <li><i class="far fa-clock"></i> Minggu: 10:00 - 16:00</li>
+                    <li><i class="fas fa-exclamation-circle"></i> Layanan Darurat: 24/7</li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h2>Informasi Kontak</h2>
+                <ul>
+                    <li><i class="fas fa-map-marker-alt"></i> Jl.Nusantara Km 20</li>
+                    <li><i class="fas fa-phone-alt"></i> +62 858-3795-8068</li>
+                    <li><i class="fas fa-envelope"></i> help@radzaban.biz.id</li>
+                    <li><i class="fas fa-globe"></i> www.radzaban.biz.id</li>
+                </ul>
             </div>
         </div>
+        
         <div class="footer-bottom">
-            <p>Hak Cipta © 2024 Radzaban. Semua Hak Dilindungi.</p>
-            <p><a href="#">Kebijakan Privasi</a> | <a href="#">Syarat dan Ketentuan</a></p>
+            <p>&copy; 2025 Radzaban. All Rights Reserved.</p>
+            <p>by <a href="#">❤️HengkiDev</a></p>
         </div>
     </footer>
+
     <a href="https://wa.me/+6285837958068" class="whatsapp-icon" target="_blank">
         <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" />
     </a>
 
-    <script src="js/script.js"> </script>
+    <a href="#" class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <script>
+        // Toggle navigation menu
+        function toggleMenu() {
+            document.querySelector('.burger-menu').classList.toggle('active');
+            document.getElementById('navMenu').classList.toggle('active');
+        }
+
+        // Close menu when clicking a nav link
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                document.querySelector('.burger-menu').classList.remove('active');
+                document.getElementById('navMenu').classList.remove('active');
+            });
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                if (this.getAttribute('href') !== '#') {
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Rating functionality
+        let selectedRating = 0;
+        
+        function setRating(rating) {
+            selectedRating = rating;
+            
+            const stars = document.querySelectorAll('.emoji-star');
+            const ratingText = document.querySelector('.rating-text');
+            
+            stars.forEach((star, index) => {
+                if (index < rating) {
+                    star.classList.add('active');
+                } else {
+                    star.classList.remove('active');
+                }
+            });
+            
+            const texts = ["Sangat Buruk", "Buruk", "Biasa", "Baik", "Sangat Baik"];
+            ratingText.textContent = texts[rating - 1];
+        }
+        
+        function submitRating() {
+            if (selectedRating === 0) {
+                alert('Silakan pilih rating terlebih dahulu');
+                return;
+            }
+            
+            alert(`Terima kasih atas penilaian Anda: ${selectedRating} bintang!`);
+            // Here you would normally send the rating to your server
+            
+            // Reset the rating
+            selectedRating = 0;
+            document.querySelectorAll('.emoji-star').forEach(star => {
+                star.classList.remove('active');
+            });
+            document.querySelector('.rating-text').textContent = 'Pilih rating Anda';
+        }
+
+        // Form submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const message = document.getElementById('message').value;
+            
+            // Here you would normally send the form data to your server
+            console.log('Form submitted:', { name, email, phone, message });
+            
+            alert('Terima kasih! Pesan Anda telah terkirim. Kami akan segera menghubungi Anda.');
+            
+            // Reset form
+            this.reset();
+        });
+
+        // Back to top button
+        window.addEventListener('scroll', function() {
+            const backToTopButton = document.getElementById('backToTop');
+            
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.add('visible');
+            } else {
+                backToTopButton.classList.remove('visible');
+            }
+        });
+
+        // Scroll animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-fade-in');
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+    </script>
 </body>
 </html>
